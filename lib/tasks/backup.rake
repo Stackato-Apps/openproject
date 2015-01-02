@@ -110,7 +110,10 @@ namespace :backup do
 
     private
     def database_configuration
-      ActiveRecord::Base.configurations[Rails.env]
+      # ActiveRecord::Base.configurations[Rails.env]
+      # Processes the contents of database.yml via ERB before sent through
+      # YAML::load
+      Rails.configuration.database_configuration[Rails.env]
     end
 
     def with_pg_config(config, &blk)

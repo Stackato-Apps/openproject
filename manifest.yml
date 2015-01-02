@@ -1,0 +1,32 @@
+applications:
+- name: openproject
+  buildpack: https://github.com/heroku/heroku-buildpack-multi.git
+  mem: 1G
+  services:
+    ${name}-db:
+      type: postgresql
+    ${name}-fs:
+      type: filesystem
+  stackato:
+    cron:
+    - "0 0 * * * bundle exec rake backup:database:create"
+    env:
+      EMAIL_DELIVERY_METHOD:
+        default: changeme #smtp or :sendmail
+      SMTP_ADDRESS:
+        default: changeme
+      SMTP_DOMAIN:
+        default: changeme
+      SMTP_PORT:
+        default: changeme
+      SMTP_USER_NAME:
+        default: changeme
+      SMTP_PASSWORD:
+        default: changeme
+    hooks:
+      pre-staging:
+      - ruby update_hostname.rb
+      post-staging:
+      - sh post_staging_setup.sh
+      - bundle exec rake db:migrate
+      - bundle exec rake db:seed

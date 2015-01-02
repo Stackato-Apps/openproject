@@ -21,6 +21,28 @@ Via plugins, it also supports:
 
 More information and screenshots can be found on [openproject.org](https://www.openproject.org).
 
+## Stackato
+
+Set up email by configuring the environment variables in manifest.yml. Alternatively, you can set the environment variables after deploying. To deploy to Stackato
+
+```
+bundle exec rake generate_secret_token
+stackato push -n
+```
+
+After deploying, start the background worker
+
+```
+stackato run bundle exec rake jobs:work
+```
+
+Login using the following credentials
+
+```
+Login: admin
+Password: admin
+```
+
 ## Installation
 
 There is an [installation guide](https://openproject.org/download/) and a [reference of configuration options](doc/CONFIGURATION.md).
