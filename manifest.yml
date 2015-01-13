@@ -10,6 +10,7 @@ applications:
   stackato:
     cron:
     - "0 0 * * * bundle exec rake backup:database:create"
+    - "*/1 * * * * bundle exec rake jobs:workoff"
     env:
       EMAIL_DELIVERY_METHOD:
         default: changeme #smtp or :sendmail
