@@ -1,7 +1,7 @@
 applications:
 - name: openproject
   buildpack: https://github.com/heroku/heroku-buildpack-multi.git
-  mem: 1G
+  memory: 1G
   services:
     ${name}-db:
       type: postgresql
