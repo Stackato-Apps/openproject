@@ -21,9 +21,9 @@ Via plugins, it also supports:
 
 More information and screenshots can be found on [openproject.org](https://www.openproject.org).
 
-## Stackato
+## HPE Helion Stackato
 
-Set up email by configuring the environment variables in manifest.yml. Alternatively, you can set the environment variables after deploying. To deploy to Stackato
+Set up email by configuring the environment variables in manifest.yml. Alternatively, you can set the environment variables after deploying. To deploy to HPE Helion Stackato
 
 ```
 bundle exec rake generate_secret_token
